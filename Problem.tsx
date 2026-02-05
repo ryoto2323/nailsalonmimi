@@ -11,7 +11,10 @@ const Problem: React.FC = () => {
 
       <div className="container mx-auto px-6 max-w-4xl relative z-10">
         <div className="text-center mb-16">
-            <h2 className="text-2xl md:text-3xl font-serif text-text mb-4">こんなネイルのお悩みありませんか？</h2>
+            <h2 className="text-2xl md:text-3xl font-serif text-text mb-4 leading-relaxed">
+              こんなネイルのお悩み<br />
+              ありませんか？
+            </h2>
             <div className="w-12 h-0.5 bg-accent/30 mx-auto"></div>
         </div>
 

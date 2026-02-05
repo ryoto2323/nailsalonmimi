@@ -33,6 +33,8 @@ const Navigation: React.FC = () => {
     }
   };
 
+  const bookingUrl = "https://airrsv.net/demosite0000/calendar";
+
   return (
     <nav 
       className={`fixed w-full z-50 transition-all duration-300 ${
@@ -65,13 +67,15 @@ const Navigation: React.FC = () => {
                 </li>
             ))}
             </ul>
-            <button 
-                onClick={() => scrollToSection(SectionId.OFFER)}
+            <a 
+                href={bookingUrl}
+                target="_blank"
+                rel="noreferrer"
                 className="px-6 py-2 bg-accent text-white rounded-full font-medium shadow-md hover:shadow-lg hover:bg-pink-600 transition-all text-sm flex items-center gap-2"
             >
                 <i className="fa-solid fa-calendar-check"></i>
                 ネット予約
-            </button>
+            </a>
         </div>
 
         {/* Mobile Menu Button */}
@@ -98,12 +102,14 @@ const Navigation: React.FC = () => {
             {item.label}
           </button>
         ))}
-        <button 
-            onClick={() => scrollToSection(SectionId.OFFER)}
+        <a 
+            href={bookingUrl}
+            target="_blank"
+            rel="noreferrer"
             className="px-8 py-3 bg-accent text-white rounded-full font-medium shadow-md"
         >
             ネット予約
-        </button>
+        </a>
       </div>
     </nav>
   );

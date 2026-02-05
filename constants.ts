@@ -1,4 +1,4 @@
-import { MenuItem, GalleryItem, CouponItem, ReviewItem, FaqItem, StaffItem } from './types';
+import { MenuItem, MenuCategory, GalleryItem, CouponItem, ReviewItem, FaqItem, StaffItem } from './types';
 
 export const PROBLEM_LIST = [
   "ジェルネイルの繰り返しで爪が薄くなった",
@@ -26,18 +26,42 @@ export const STRONG_POINTS = [
 ];
 
 export const GALLERY_ITEMS: GalleryItem[] = [
-  { id: 1, image: "https://placehold.co/600x600/fbcfe8/831843?text=Nuance", title: "大人ニュアンス", category: "Nuance" },
-  { id: 2, image: "https://placehold.co/600x600/fce7f3/831843?text=One+Color", title: "オフィス上品", category: "Simple" },
-  { id: 3, image: "https://placehold.co/600x600/fdf2f8/831843?text=French", title: "王道フレンチ", category: "French" },
-  { id: 4, image: "https://placehold.co/600x600/fae8ff/831843?text=Magnet", title: "旬のマグネット", category: "Trend" },
+  { id: 1, image: "https://github.com/ryoto2323/nailsalonmimi/blob/main/public/aaa.png?raw=true", title: "大人ニュアンス", category: "Nuance" },
+  { id: 2, image: "https://github.com/ryoto2323/nailsalonmimi/blob/main/public/bbb.png?raw=true", title: "オフィス上品", category: "Simple" },
+  { id: 3, image: "https://github.com/ryoto2323/nailsalonmimi/blob/main/public/ccc.png?raw=true", title: "王道フレンチ", category: "French" },
+  { id: 4, image: "https://github.com/ryoto2323/nailsalonmimi/blob/main/public/ddd.png?raw=true", title: "旬のマグネット", category: "Trend" },
 ];
 
-export const MENU_ITEMS: MenuItem[] = [
-  { name: "ワンカラー / ラメグラ", price: "5,500円" },
-  { name: "定額シンプルコース", price: "6,980円" },
-  { name: "定額トレンドコース", price: "7,980円" },
-  { name: "持ち込みデザイン", price: "8,980円〜" },
-  { name: "他店オフ（付替）", price: "初回無料" },
+export const MENU_CATEGORIES: MenuCategory[] = [
+  {
+    id: 'hand',
+    label: 'Hand',
+    items: [
+      { name: "ワンカラー / ラメグラ", price: "5,500円" },
+      { name: "定額シンプルコース", price: "6,980円", description: "オフィス向けのシンプルなデザイン" },
+      { name: "定額トレンドコース", price: "7,980円", description: "毎月変わる季節のトレンドデザイン" },
+      { name: "持ち込みデザイン", price: "8,980円〜", description: "お好きな画像をお持ち込みいただけます" },
+    ]
+  },
+  {
+    id: 'foot',
+    label: 'Foot',
+    items: [
+      { name: "フット ワンカラー", price: "6,600円" },
+      { name: "親指アートコース", price: "7,700円" },
+      { name: "定額フットデザイン", price: "8,800円" },
+    ]
+  },
+  {
+    id: 'care',
+    label: 'Care / Off',
+    items: [
+      { name: "ハンドケアコース", price: "3,300円", description: "整爪・甘皮処理・磨き・保湿" },
+      { name: "他店オフ（付替）", price: "初回無料" },
+      { name: "自店オフ（付替）", price: "4週以内無料" },
+      { name: "オフのみ", price: "3,300円" },
+    ]
+  }
 ];
 
 export const STAFF_MEMBERS: StaffItem[] = [
@@ -45,25 +69,28 @@ export const STAFF_MEMBERS: StaffItem[] = [
     id: 1,
     name: "桜井 美樹",
     role: "Owner Nailist",
-    image: "https://placehold.co/400x400/fbcfe8/831843?text=Miki",
+    image: "https://github.com/ryoto2323/nailsalonmimi/blob/main/public/eee.png?raw=true",
     message: "「爪が薄い」「形に自信がない」そんなお悩みもぜひご相談ください。お客様一人ひとりのライフスタイルに合わせ、一番美しく見える指先をプロデュースします。",
-    tags: ["パラジェル講師", "似合わせカラー"]
+    tags: ["パラジェル講師", "似合わせカラー"],
+    instagram: "https://instagram.com"
   },
   {
     id: 2,
     name: "伊藤 結衣",
     role: "Top Nailist",
-    image: "https://placehold.co/400x400/fce7f3/831843?text=Yui",
+    image: "https://github.com/ryoto2323/nailsalonmimi/blob/main/public/fff.png?raw=true",
     message: "トレンドを取り入れた大人可愛いデザインが得意です。手描きのフラワーアートやニュアンスネイルならお任せください！一緒に「可愛い」を作りましょう♪",
-    tags: ["手描きアート", "トレンドデザイン"]
+    tags: ["手描きアート", "トレンドデザイン"],
+    instagram: "https://instagram.com"
   },
   {
     id: 3,
     name: "佐藤 華",
     role: "Nailist",
-    image: "https://placehold.co/400x400/fae8ff/831843?text=Hana",
+    image: "https://github.com/ryoto2323/nailsalonmimi/blob/main/public/ggg.png?raw=true",
     message: "丁寧なケアとマッサージに定評があります。ネイルの時間が日々の癒しになるよう、笑顔でおもてなしさせていただきます。シンプル上品なネイルが好きです。",
-    tags: ["丁寧なケア", "オフィスネイル"]
+    tags: ["丁寧なケア", "オフィスネイル"],
+    instagram: "https://instagram.com"
   }
 ];
 

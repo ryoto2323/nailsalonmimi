@@ -3,6 +3,7 @@ import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import Problem from './components/Problem';
 import StrongPoints from './components/StrongPoints';
+import BeginnerGuide from './components/BeginnerGuide';
 import Gallery from './components/Gallery';
 import Menu from './components/Menu';
 import Staff from './components/Staff';
@@ -23,6 +24,7 @@ const App: React.FC = () => {
         <Hero />
         <Problem />
         <StrongPoints />
+        <BeginnerGuide />
         <Gallery />
         <Menu />
         <Staff />

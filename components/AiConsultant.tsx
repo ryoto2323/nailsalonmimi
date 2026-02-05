@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, Sparkles, X, Loader2 } from 'lucide-react';
+import { Send, Sparkles, X, Loader2, Copy, ExternalLink, CalendarCheck } from 'lucide-react';
 import { ChatMessage } from '../types';
 import { generateConsultationResponse } from '../services/geminiService';
 
@@ -18,6 +18,8 @@ const AiConsultant: React.FC = () => {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const bookingUrl = "https://airrsv.net/demosite0000/calendar";
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -67,6 +69,22 @@ const AiConsultant: React.FC = () => {
     }
   }
 
+  const handleCopyAndBook = async () => {
+    const lastModelMessage = messages.filter(m => m.role === 'model').pop();
+    if (!lastModelMessage) return;
+
+    try {
+        await navigator.clipboard.writeText(lastModelMessage.text);
+        alert("ご提案内容をコピーしました！\n予約画面の「備考欄」に貼り付けていただくと、スムーズにご案内できます✨");
+        window.open(bookingUrl, "_blank");
+    } catch (err) {
+        // Fallback
+        window.open(bookingUrl, "_blank");
+    }
+  };
+
+  const isLastMessageFromModel = messages.length > 1 && messages[messages.length - 1].role === 'model';
+
   return (
     <>
       {/* Desktop Floating Action Button */}
@@ -79,10 +97,10 @@ const AiConsultant: React.FC = () => {
         <span className="font-medium">AIデザイン相談</span>
       </button>
 
-      {/* Mobile Floating Action Button */}
+      {/* Mobile Floating Action Button - Positioned higher (bottom-32) to clear sticky CTA */}
       <button
         onClick={() => setIsOpen(true)}
-        className={`md:hidden fixed bottom-24 right-4 z-40 bg-white text-accent border border-secondary p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center ${isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+        className={`md:hidden fixed bottom-32 right-4 z-40 bg-white text-accent border border-secondary p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center ${isOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
       >
         <Sparkles className="w-6 h-6" />
       </button>
@@ -125,6 +143,7 @@ const AiConsultant: React.FC = () => {
                   </div>
                 </div>
               ))}
+              
               {isLoading && (
                 <div className="flex justify-start">
                   <div className="bg-primary px-4 py-3 rounded-2xl rounded-bl-none border border-secondary/50 flex items-center gap-2">
@@ -133,6 +152,21 @@ const AiConsultant: React.FC = () => {
                   </div>
                 </div>
               )}
+
+              {/* Conversion Action Button */}
+              {!isLoading && isLastMessageFromModel && (
+                  <div className="flex justify-center pt-2 animate-fade-in-up">
+                      <button 
+                        onClick={handleCopyAndBook}
+                        className="flex items-center gap-2 bg-gradient-to-r from-accent to-pink-500 hover:from-pink-600 hover:to-accent text-white px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5"
+                      >
+                          <Copy size={16} />
+                          <span className="font-bold text-sm">このデザインで予約する</span>
+                          <CalendarCheck size={16} className="ml-1 opacity-80" />
+                      </button>
+                  </div>
+              )}
+
               <div ref={messagesEndRef} />
             </div>
 

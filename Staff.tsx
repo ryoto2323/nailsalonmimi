@@ -1,6 +1,7 @@
 import React from 'react';
 import { SectionId } from '../types';
 import { STAFF_MEMBERS } from '../constants';
+import { Instagram } from 'lucide-react';
 
 const Staff: React.FC = () => {
   return (
@@ -14,9 +15,9 @@ const Staff: React.FC = () => {
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {STAFF_MEMBERS.map((staff) => (
-                <div key={staff.id} className="group bg-primary/20 rounded-2xl p-6 md:p-8 hover:bg-white hover:shadow-lg transition-all duration-300 border border-transparent hover:border-secondary/50 text-center">
+                <div key={staff.id} className="group bg-primary/20 rounded-2xl p-6 md:p-8 hover:bg-white hover:shadow-lg transition-all duration-300 border border-transparent hover:border-secondary/50 text-center flex flex-col items-center">
                     {/* Image */}
-                    <div className="relative w-40 h-40 mx-auto mb-6">
+                    <div className="relative w-40 h-40 mb-6">
                         <div className="absolute inset-0 bg-secondary rounded-full opacity-20 group-hover:scale-110 transition-transform duration-300"></div>
                         <img 
                             src={staff.image} 
@@ -26,7 +27,7 @@ const Staff: React.FC = () => {
                     </div>
 
                     {/* Content */}
-                    <div>
+                    <div className="flex-1 w-full">
                         <p className="text-accent font-serif text-sm tracking-widest mb-1">{staff.role}</p>
                         <h3 className="text-xl font-bold text-text mb-4 font-serif">{staff.name}</h3>
                         
@@ -39,10 +40,23 @@ const Staff: React.FC = () => {
                             ))}
                         </div>
 
-                        <p className="text-text/80 text-sm leading-relaxed text-justify md:text-center">
+                        <p className="text-text/80 text-sm leading-relaxed text-justify md:text-center mb-6">
                             {staff.message}
                         </p>
                     </div>
+
+                    {/* Instagram Link */}
+                    {staff.instagram && (
+                        <a 
+                            href={staff.instagram} 
+                            target="_blank" 
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-2 text-text/60 hover:text-accent transition-colors text-sm font-medium px-4 py-2 border border-secondary/30 rounded-full hover:bg-white hover:border-accent/30"
+                        >
+                            <Instagram className="w-4 h-4" />
+                            <span>Follow Me</span>
+                        </a>
+                    )}
                 </div>
             ))}
         </div>

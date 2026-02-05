@@ -4,6 +4,12 @@ export interface MenuItem {
   description?: string;
 }
 
+export interface MenuCategory {
+  id: string;
+  label: string;
+  items: MenuItem[];
+}
+
 export interface GalleryItem {
   id: number;
   image: string;
@@ -45,12 +51,14 @@ export interface StaffItem {
   image: string;
   message: string;
   tags: string[];
+  instagram?: string;
 }
 
 export enum SectionId {
   HOME = 'home',
   PROBLEM = 'problem',
   STRONG_POINTS = 'strong-points',
+  BEGINNER = 'beginner',
   GALLERY = 'gallery',
   MENU = 'menu',
   STAFF = 'staff',

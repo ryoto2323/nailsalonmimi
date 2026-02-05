@@ -1,8 +1,10 @@
 import React from 'react';
 import { SectionId } from '../types';
-import { MapPin, Phone, Clock, Instagram } from 'lucide-react';
+import { MapPin, Phone, Clock, Instagram, ExternalLink } from 'lucide-react';
 
 const Access: React.FC = () => {
+  const mapUrl = "https://www.google.com/maps/search/?api=1&query=東京都港区南青山3-1-1";
+
   return (
     <section id={SectionId.ACCESS} className="py-24 bg-white">
       <div className="container mx-auto px-6">
@@ -38,12 +40,17 @@ const Access: React.FC = () => {
                         </div>
                     </div>
                     
-                    <a href="https://instagram.com" target="_blank" rel="noreferrer" className="flex items-center gap-4 text-text hover:text-accent transition-colors group">
-                        <div className="w-5 h-5 flex items-center justify-center">
-                            <Instagram className="w-5 h-5" />
-                        </div>
-                        <span className="border-b border-text/30 group-hover:border-accent">@nail_salon_mimi</span>
-                    </a>
+                    <div className="pt-4 flex flex-wrap gap-4">
+                        <a href="https://instagram.com" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-text hover:text-accent transition-colors group text-sm font-medium bg-white px-4 py-2 rounded-full border border-secondary/30 hover:border-accent">
+                            <Instagram className="w-4 h-4" />
+                            <span>@nail_salon_mimi</span>
+                        </a>
+                         <a href={mapUrl} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-text hover:text-accent transition-colors group text-sm font-medium bg-white px-4 py-2 rounded-full border border-secondary/30 hover:border-accent">
+                            <MapPin className="w-4 h-4" />
+                            <span>Google Mapで開く</span>
+                            <ExternalLink className="w-3 h-3 ml-1" />
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -58,7 +65,7 @@ const Access: React.FC = () => {
                     loading="lazy" 
                     referrerPolicy="no-referrer-when-downgrade"
                     title="Google Map"
-                    className="w-full h-full filter grayscale-[0.2] contrast-[0.9] hover:grayscale-0 hover:contrast-100 transition-all duration-500"
+                    className="w-full h-full"
                 ></iframe>
             </div>
         </div>

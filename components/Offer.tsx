@@ -32,8 +32,10 @@ const Offer: React.FC = () => {
                 </div>
 
                 <a 
-                    href="#booking" 
-                    className="inline-block bg-accent hover:bg-pink-600 text-white text-lg font-bold py-4 px-12 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 w-full md:w-auto"
+                    href="https://airrsv.net/demosite0000/calendar" 
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-block bg-accent hover:bg-pink-600 text-white text-base md:text-lg font-bold py-4 px-4 md:px-12 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 w-full md:w-auto whitespace-nowrap"
                 >
                     クーポンを使って予約する
                 </a>
